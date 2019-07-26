@@ -1,9 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
 @include('user.partials._head')
-@include('user.partials._header')
-@include('user.partials._errors')
 
-@section('content')
+<body>
+<div id="app">
+    @include('user.partials._header')
 
-@show
+    @include('user.partials._errors')
 
-@include('user.partials._footer')
+    @section('content')
+
+    @show
+
+    @include('user.partials._footer')
+</div>
+
+</body>
+</html>

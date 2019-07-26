@@ -184,7 +184,7 @@
                 </div>
                 <div class="form-group">
                     <label>Password</label>
-                    <input id="password" type="password" name="password" class="form-control" placeholder="Password">
+                    <input id="" type="password" name="password" class="form-control" placeholder="Password">
                     @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

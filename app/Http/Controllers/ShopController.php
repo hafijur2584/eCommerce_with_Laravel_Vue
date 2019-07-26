@@ -29,6 +29,9 @@ class ShopController extends Controller
 
         return view('welcome');
     }
+    public function getData(){
+        return Product::inRandomOrder()->take(8)->get();
+    }
 
 
 }

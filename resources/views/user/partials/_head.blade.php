@@ -1,6 +1,6 @@
-<!DOCTYPE HTML>
-<html lang="en">
+
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Bootstrap-ecommerce by Vosidiy">
@@ -10,21 +10,13 @@
     <title>e-commerce</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('user/images/favicon.ico') }}">
+    <!-- jQuery -->
+    <script src="{{ asset('user/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>
 
-    {{--<!-- jQuery -->--}}
-    {{--<script src="{{ asset('user/js/jquery-2.0.0.min.js') }}" type="text/javascript"></script>--}}
-
-    {{--<!-- Bootstrap4 files-->--}}
-    {{--<script src="{{ asset('user/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>--}}
-    {{--<link href="{{ asset('user/css/bootstrap.css') }}" rel="stylesheet" type="text/css"/>--}}
-
-    {{--<!-- Font awesome 5 -->--}}
-    {{--<link href="{{ asset('user/fonts/fontawesome/css/fontawesome-all.min.css') }}" type="text/css" rel="stylesheet">--}}
-
-<!-- Scripts -->
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-<!-- Styles -->
+    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- plugin: owl carousel  -->
@@ -56,5 +48,3 @@
     </script>
 
 </head>
-<body>
-<div id="app">

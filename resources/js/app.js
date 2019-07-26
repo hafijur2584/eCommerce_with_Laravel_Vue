@@ -9,8 +9,8 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/admin/home', component: require('./components/Dashboard.vue').default },
-  { path: '/admin/profile', component: require('./components/Profile.vue').default },
+  { path: '/admin/home', component: require('./components/admin/Dashboard.vue').default },
+  { path: '/admin/profile', component: require('./components/admin/Profile.vue').default },
   { path: '/', component: require('./components/user/Home.vue').default },
   { path: '/invoice', component: require('./components/user/Invoice.vue').default },
   { path: '/cart', component: require('./components/user/Cart.vue').default },
@@ -18,7 +18,7 @@ const routes = [
   { path: '/product', component: require('./components/user/ProductList.vue').default },
   { path: '/singleProduct', component: require('./components/user/SinglePage.vue').default },
 ]
-// let Slider = require('./components/user/Slider.vue').default;
+// let Footer = require('./components/user/Footer.vue').default;
 const router = new VueRouter({
   mode:'history',
   routes // short for `routes: routes`
