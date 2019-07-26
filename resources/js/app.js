@@ -11,6 +11,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/admin/home', component: require('./components/admin/Dashboard.vue').default },
   { path: '/admin/profile', component: require('./components/admin/Profile.vue').default },
+  { path: '/admin/product/create', component: require('./components/admin/product/Create.vue').default },
   { path: '/', component: require('./components/user/Home.vue').default },
   { path: '/invoice', component: require('./components/user/Invoice.vue').default },
   { path: '/cart', component: require('./components/user/Cart.vue').default },

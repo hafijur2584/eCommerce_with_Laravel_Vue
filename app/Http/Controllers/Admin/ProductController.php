@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProductRequest;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -39,9 +40,18 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+        $product = new Product;
+        $product->name           =$request->name;
+        $product->model          =$request->model;
+        $product->brand          =$request->brand;
+        $product->color          =$request->color;
+        $product->price          =$request->price;
+        $product->stock          =$request->stock;
+        $product->description    =$request->description;
+        $product->details        =$request->details;
+        $product->save();
     }
 
     /**

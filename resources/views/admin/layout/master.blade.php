@@ -107,6 +107,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-cog"></i>
+              <p>
+                Product Management
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <router-link to="/admin/product/create" class="nav-link active">
+                  <i class="fas fa-circle-notch nav-icon"></i>
+                  <p>Create Product</p>
+                </router-link>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <router-link to="/admin/profile" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
