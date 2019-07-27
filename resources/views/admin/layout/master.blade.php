@@ -117,9 +117,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <router-link to="/admin/product/create" class="nav-link active">
+                <router-link to="/admin/product/create" class="nav-link">
                   <i class="fas fa-circle-notch nav-icon"></i>
                   <p>Create Product</p>
+                </router-link>
+              </li>
+              <li class="nav-item">
+                <router-link to="/admin/product" class="nav-link">
+                  <i class="fas fa-circle-notch nav-icon"></i>
+                  <p>Product List</p>
                 </router-link>
               </li>
             </ul>

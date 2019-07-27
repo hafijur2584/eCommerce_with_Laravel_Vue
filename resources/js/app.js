@@ -3,6 +3,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { Form, HasError, AlertError } from 'vform';
+
+window.Form = Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
 
 import VueRouter from 'vue-router'
 
@@ -11,6 +16,7 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/admin/home', component: require('./components/admin/Dashboard.vue').default },
   { path: '/admin/profile', component: require('./components/admin/Profile.vue').default },
+  { path: '/admin/Product', component: require('./components/admin/product/Products.vue').default },
   { path: '/admin/product/create', component: require('./components/admin/product/Create.vue').default },
   { path: '/', component: require('./components/user/Home.vue').default },
   { path: '/invoice', component: require('./components/user/Invoice.vue').default },

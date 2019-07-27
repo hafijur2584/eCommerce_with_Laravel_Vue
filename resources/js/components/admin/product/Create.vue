@@ -13,7 +13,6 @@
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" placeholder="Enter product name" v-model="list.name">
-                            <small v-if="errors.length >0">{{ errors.name }}</small>
                         </div>
                         <div class="form-group">
                             <label>Model</label>
@@ -92,7 +91,10 @@
         },
         methods:{
             save(){
-                axios.post('/admin/product',this.$data.list).then((response) => console.log(response)).catch((error) => this.errors = error.response.data.errors)
+                axios.post('/admin/product',this.$data.list).then((response) => console.log(response))
+                .catch((error) => this.errors = error.response.data.errors)
+
+
             }
         }
     }

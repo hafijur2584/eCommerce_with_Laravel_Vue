@@ -20,8 +20,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('id','desc')->get();
-        return view('admin.product.list',compact('products'));
+        return Product::orderBy('id','desc')->take(8)->get();
     }
 
     /**
@@ -43,15 +42,17 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $product = new Product;
-        $product->name           =$request->name;
-        $product->model          =$request->model;
-        $product->brand          =$request->brand;
-        $product->color          =$request->color;
-        $product->price          =$request->price;
-        $product->stock          =$request->stock;
-        $product->description    =$request->description;
-        $product->details        =$request->details;
+        $product->name           =  $request->name;
+        $product->slug           =  $request->slug;
+        $product->model          =  $request->model;
+        $product->brand          =  $request->brand;
+        $product->color          =  $request->color;
+        $product->price          =  $request->price;
+        $product->stock          =  $request->stock;
+        $product->description    =  $request->description;
+        $product->details        =  $request->details;
         $product->save();
+
     }
 
     /**
