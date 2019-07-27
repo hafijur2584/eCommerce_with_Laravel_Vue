@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Resources\Cart\CartCollection;
+use App\Http\Resources\Cart\CartResource;
+use App\Model\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        return CartResource::collection(Cart::all());
     }
 
     /**
@@ -25,7 +33,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "test";
     }
 
     /**
@@ -34,9 +42,9 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Cart $cart)
     {
-        //
+        return new CartResource($cart);
     }
 
     /**

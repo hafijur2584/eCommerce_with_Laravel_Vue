@@ -51,7 +51,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Add New</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add New Product</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import { setInterval } from 'timers';
     export default {
         data(){
           return{
@@ -140,11 +141,23 @@
             }
             ,
             createProduct(){
-                this.form.post('/admin/product')
+                this.$Progress.start();
+                this.form.post('/admin/product');
+                Fire.$emit('AfterCreate');
+                $('#exampleModalCenter').modal('hide');
+                Toast.fire({
+                type: 'success',
+                title: 'Product created successfully'
+                })
+                this.$Progress.finish();
             }
         },
         created() {
             this.loadUsers();
+            Fire.$on('AfterCreate',() => {
+                this.loadUsers();
+            });
+            // setInterval(() =>this.loadUsers(),3000);
         }
         ,
         name: "Products"
