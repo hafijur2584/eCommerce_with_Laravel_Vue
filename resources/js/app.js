@@ -36,11 +36,13 @@ const routes = [
   { path: '/admin/Product', component: require('./components/admin/product/Products.vue').default },
   { path: '/admin/product/create', component: require('./components/admin/product/Create.vue').default },
   { path: '/', component: require('./components/user/Home.vue').default },
+  { path: '/home', component: require('./components/user/Home.vue').default },
   { path: '/invoice', component: require('./components/user/Invoice.vue').default },
   { path: '/cart', component: require('./components/user/Cart.vue').default },
   { path: '/checkout', component: require('./components/user/Checkout.vue').default },
   { path: '/product', component: require('./components/user/ProductList.vue').default },
   { path: '/singleProduct', component: require('./components/user/SinglePage.vue').default },
+  { path: '/profile', component: require('./components/user/Profile.vue').default },
 ]
 // let Footer = require('./components/user/Footer.vue').default;
 const router = new VueRouter({

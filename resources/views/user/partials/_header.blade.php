@@ -120,12 +120,13 @@
                                         </div>
                                     </a>
                                     <div class="dropdown-menu">
+                                        <p class="dropdown-item"><router-link to="/profile" style="cursor: pointer;">Profile</a></p>
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">Logout</a>
                                         <form style="display: inline;" id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
-                                    </div> <!--  dropdown-menu .// -->
+                                    </div> 
                                 @endguest
                             </div>  <!-- widget-header .// -->
 

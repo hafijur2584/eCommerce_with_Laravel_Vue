@@ -107,29 +107,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-cog"></i>
+          <li class="nav-item">
+            <router-link to="/admin/product" class="nav-link">
+              <i class="nav-icon fas fa-user-circle"></i>
               <p>
-                Product Management
-                <i class="right fas fa-angle-left"></i>
+                Product
               </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <router-link to="/admin/product/create" class="nav-link">
-                  <i class="fas fa-circle-notch nav-icon"></i>
-                  <p>Create Product</p>
-                </router-link>
-              </li>
-              <li class="nav-item">
-                <router-link to="/admin/product" class="nav-link">
-                  <i class="fas fa-circle-notch nav-icon"></i>
-                  <p>Product List</p>
-                </router-link>
-              </li>
-            </ul>
-          </li>
+            </router-link>
+          </li> 
           <li class="nav-item">
             <router-link to="/admin/profile" class="nav-link">
               <i class="nav-icon fas fa-user-circle"></i>
@@ -180,7 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2019 <a href="/admin/home">Product sale</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

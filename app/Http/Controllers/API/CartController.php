@@ -5,8 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Resources\Cart\CartCollection;
 use App\Http\Resources\Cart\CartResource;
 use App\Model\Cart;
+use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -22,7 +24,8 @@ class CartController extends Controller
      */
     public function index()
     {
-        return CartResource::collection(Cart::all());
+          
+        return Cart::totalCarts();
     }
 
     /**
@@ -33,7 +36,30 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        return "test";
+        // $this->validate($request,[
+        //     'product_id' => 'required'
+        // ]);
+
+        $product = Product::where('id',$request->product_id)->first()->stock;
+
+        $this->validate($request,[
+           'product_id' => 'required'
+        ],
+        [
+            'product_id.required' => 'please give a product'
+        ]);
+        $carts = Cart::where('user_id',Auth::id())->where('product_id',$request->product_id)->where('order_id',null)->first();
+        if (!is_null($carts)){
+            $carts->increment('product_quantity');
+        }
+        else{
+            $cart = new Cart();
+            $cart->user_id = Auth::id();
+            $cart->product_id = $request->product_id;
+            $cart->product_quantity = $request->product_quantity;
+            $cart->save();
+        }
+
     }
 
     /**
@@ -44,7 +70,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        return new CartResource($cart);
+        return $cart;
     }
 
     /**
@@ -56,7 +82,7 @@ class CartController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
@@ -67,6 +93,11 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::find($id);
+        if (!is_null($cart)){
+            $cart->delete();
+        }else{
+            return redirect()->back();
+        }
     }
 }

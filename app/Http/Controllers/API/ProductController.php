@@ -39,7 +39,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return new ProductResource($product);
+        $products = Product::where('name','!=',$slug)->inRandomOrder()->take(3)->get();
+        $product = Product::where('name',$slug)->firstOrfail();
+
     }
 
     /**
