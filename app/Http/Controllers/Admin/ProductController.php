@@ -86,7 +86,33 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Product::where('id',$id)->firstOrfail();
+        $this->validate($request,[
+            'name' => 'required|string|max:191',
+            'slug' => 'required|string|max:191|unique:products,slug,'.$product->id,
+            'model' => 'required|string|max:191',
+            'brand' => 'required|string|max:191',
+            'color' => 'required|string|max:191',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'description' => 'required',
+            'details' => 'required'
+        ]);
+        
+        
+        
+        $product->name           =  $request->name;
+        $product->slug           =  $request->slug;
+        $product->model          =  $request->model;
+        $product->brand          =  $request->brand;
+        $product->color          =  $request->color;
+        $product->price          =  $request->price;
+        $product->stock          =  $request->stock;
+        $product->description    =  $request->description;
+        $product->details        =  $request->details;
+        $product->save();
+        
+        
     }
 
     /**
@@ -97,6 +123,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrfail($id);
+        $product->delete();
+        return ["message","Product Deleted"];
     }
 }

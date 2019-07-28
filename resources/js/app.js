@@ -11,7 +11,7 @@ const Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000
+  timer: 5000
 });
 window.Toast = Toast;
 
@@ -27,7 +27,7 @@ import VueProgressBar from 'vue-progressbar'
 Vue.use(VueProgressBar, {
   color: 'rgb(143, 255, 199)',
   failedColor: 'red',
-  height: '3px'
+  height: '10px'
 })
 
 const routes = [

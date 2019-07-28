@@ -34,7 +34,6 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $product = Product::where('id',$request->product_id)->first()->stock;
-        dd($product);
 
         $this->validate($request,[
            'product_id' => 'required'

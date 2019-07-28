@@ -6,7 +6,7 @@
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">Add New <i class="fas fa-user-plus"></i></button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter" @click="newModel">Add New <i class="fas fa-user-plus"></i></button>
                     </div>
                 </div>
             </div>
@@ -35,8 +35,8 @@
                         <td>$ {{ product.price }}</td>
                         <td>{{ product.stock }}</td>
                         <td>
-                            <a style="color: green" href=""><i class="fa fa-edit"></i></a>/
-                            <a style="color: red;" href=""><i class="fa fa-trash"></i></a>
+                            <a style="color: green" @click="editModel(product)"><i class="fa fa-edit"></i></a>/
+                            <a style="color: red;cursor:pointer;" @click="deleteProduct(product.id)"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
 
@@ -51,12 +51,13 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Add New Product</h5>
+                        <h5 v-show="!editMode" class="modal-title" id="exampleModalLongTitle">Add new product</h5>
+                        <h5 v-show="editMode" class="modal-title" id="exampleModalLongTitle">Update product info</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form @submit.prevent="createProduct">
+                    <form @submit.prevent="editMode? updateProduct() : createProduct()">
                         <div class="modal-body">
                             <div class="form-group">
                                 <input v-model="form.name" type="text" name="name"
@@ -105,8 +106,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <button v-show="editMode" type="submit" class="btn btn-success">Update</button>
+                            <button v-show= "!editMode" type="submit" class="btn btn-primary">Create</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                     </form>
                 </div>
@@ -121,8 +123,10 @@ import { setInterval } from 'timers';
     export default {
         data(){
           return{
+              editMode:false,
               products:{},
               form: new Form({
+                  id :'',
                   name:'',
                   slug:'',
                   model:'',
@@ -136,20 +140,76 @@ import { setInterval } from 'timers';
           }
         },
         methods:{
+            updateProduct(id){
+                this.$Progress.start();
+                this.form.put('/admin/product/'+this.form.id).then(() => {
+                Fire.$emit('AfterCreate');
+                $('#exampleModalCenter').modal('hide');
+                Toast.fire({
+                type: 'success',
+                title: 'Product updated successfully'
+                })
+
+                }).catch(() => {
+                    this.$Progress.fail();
+                });
+            },
+            editModel(product){
+                this.editMode = true;
+                this.form.reset();
+                this.form.clear();
+                this.form.fill (product);
+                $('#exampleModalCenter').modal('show');
+            },
+            newModel(){
+                this.editMode = false;
+                this.form.reset();
+                this.form.clear();
+                $('#exampleModalCenter').modal('show');
+            },
+            deleteProduct(id){
+                Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if(result.value){
+                        //send request to the server
+                    this.form.delete('/admin/product/'+id).then(() => {
+                        Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    }).catch(() => {
+                        Swal("Failed!","Not Deleted. There are something wrong.","warning");
+                    })
+                    Fire.$emit('AfterCreate');
+                    }
+                    
+                    
+                })
+            },
             loadUsers(){
                 axios.get("/admin/product").then((data) => (this.products = data.data));
-            }
-            ,
+            },
+            
             createProduct(){
-                this.$Progress.start();
-                this.form.post('/admin/product');
-                Fire.$emit('AfterCreate');
+                // this.$Progress.start();
+                this.form.post('/admin/product').then((result) =>{
+                    Fire.$emit('AfterCreate');
                 $('#exampleModalCenter').modal('hide');
                 Toast.fire({
                 type: 'success',
                 title: 'Product created successfully'
                 })
-                this.$Progress.finish();
+                })
+                
+                // this.$Progress.finish();
             }
         },
         created() {
