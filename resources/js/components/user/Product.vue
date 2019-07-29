@@ -11,7 +11,7 @@
                     <div class="col-md-3" v-for="(item,key) in lists" :key="key">
                         <figure class="card card-product">
                             <div class="img-wrap">
-                                <img :src="item.images">
+                                <img :src="'/images/'+ item.images">
                                 <p class="btn-overlay" ><i class="fa fa-search-plus" @click="openShow"></i> Quick view</p>
                             </div>
                             <figcaption class="info-wrap">
@@ -51,6 +51,9 @@
              })
         },
         methods:{
+            getImgUrl(key) {
+                return '/images/' + this.lists[key] + '.jpeg';
+            },
             openShow(){
                 this.showActive = 'is-active';
             },

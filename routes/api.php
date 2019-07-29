@@ -18,6 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:api')->get('/invoice', 'OrderController@invoice');
+Route::apiResource('/user','API\UserController');
 Route::apiResource('/products','API\ProductController');
 Route::apiResource('/carts','API\CartController');
 Route::apiResource('/orders','API\OrderController');
+Route::get('profile','API\UserController@profile');
+Route::put('profile','API\UserController@updateProfile');

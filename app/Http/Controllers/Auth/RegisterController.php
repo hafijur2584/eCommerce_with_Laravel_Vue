@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -40,6 +42,25 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -49,9 +70,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:191'],
+            'username' => ['required', 'string', 'max:191','unique:users'],
+            'phone_no' => ['required', 'string', 'max:20','unique:users'],
+            'address' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
     }
 
@@ -65,6 +89,9 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
+            'phone_no' => $data['phone_no'],
+            'address' => $data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

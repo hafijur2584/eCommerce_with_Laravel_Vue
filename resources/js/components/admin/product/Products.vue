@@ -95,6 +95,9 @@
                                 <has-error :form="form" field="stock"></has-error>
                             </div>
                             <div class="form-group">
+                                <input name="images" type="file" @change = "updateProfile" class="form-control" id="inputImages">
+                          </div>
+                            <div class="form-group">
                             <textarea v-model="form.description" name="description"
                                       class="form-control" :class="{ 'is-invalid': form.errors.has('description') }" placeholder="Product short description"></textarea>
                                 <has-error :form="form" field="description"></has-error>
@@ -135,25 +138,43 @@ import { setInterval } from 'timers';
                   price:'',
                   stock:'',
                   description:'',
-                  details: ''
+                  details: '',
+                  images: '',
               })
           }
         },
         methods:{
-            updateProduct(id){
-                this.$Progress.start();
-                this.form.put('/admin/product/'+this.form.id).then(() => {
-                Fire.$emit('AfterCreate');
-                $('#exampleModalCenter').modal('hide');
-                Toast.fire({
+            updateProfile(e){
+              let file = e.target.files[0];
+              let reader = new FileReader();
+              if (file['size'] < 2111775) {
+                reader.onloadend = (file) => {
+                  this.form.images = reader.result;
+              }
+              reader.readAsDataURL(file);
+          }else{
+            Swal.fire({
+              type:'error',
+              title:'Oops...',
+              text:'File must be under 2mb.',
+          })
+
+        }
+    },
+    updateProduct(id){
+        this.$Progress.start();
+        this.form.put('/admin/product/'+this.form.id).then(() => {
+            Fire.$emit('AfterCreate');
+            $('#exampleModalCenter').modal('hide');
+            Toast.fire({
                 type: 'success',
                 title: 'Product updated successfully'
-                })
+            })
 
-                }).catch(() => {
-                    this.$Progress.fail();
-                });
-            },
+        }).catch(() => {
+            this.$Progress.fail();
+        });
+    },
             editModel(product){
                 this.editMode = true;
                 this.form.reset();
@@ -213,6 +234,7 @@ import { setInterval } from 'timers';
             }
         },
         created() {
+            axios.get("/admin/product").then(({data}) => (this.form.fill(data)));
             this.loadUsers();
             Fire.$on('AfterCreate',() => {
                 this.loadUsers();

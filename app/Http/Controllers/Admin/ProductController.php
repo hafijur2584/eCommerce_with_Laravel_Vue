@@ -6,6 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Model\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Image;
 
 class ProductController extends Controller
 {
@@ -51,6 +52,18 @@ class ProductController extends Controller
         $product->stock          =  $request->stock;
         $product->description    =  $request->description;
         $product->details        =  $request->details;
+
+        $currentImages = $product->images;
+        if($request->images != $currentImages){
+
+            $name = time().'.'.explode('/', explode(':',substr($request->images, 0,strpos($request->images, ';')))[1])[1];
+
+            Image::make($request->images)->save(public_path('images/').$name);
+
+            $product->images =$name;
+
+        }
+
         $product->save();
 
     }
@@ -110,9 +123,26 @@ class ProductController extends Controller
         $product->stock          =  $request->stock;
         $product->description    =  $request->description;
         $product->details        =  $request->details;
+
+        $currentImages = $product->images;
+        if($request->images != $currentImages){
+
+            $name = time().'.'.explode('/', explode(':',substr($request->images, 0,strpos($request->images, ';')))[1])[1];
+
+            Image::make($request->images)->save(public_path('images/').$name);
+
+            $product->images =$name;
+
+            $userImages = public_path('images/').$currentImages;
+            if(file_exists($userImages)){
+                @unlink($userImages);
+            }
+
+        }
+
         $product->save();
-        
-        
+
+
     }
 
     /**
