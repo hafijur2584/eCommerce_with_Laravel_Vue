@@ -2664,6 +2664,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var Product = __webpack_require__(/*! ./Product.vue */ "./resources/js/components/user/Product.vue")["default"];
 
 var Master = __webpack_require__(/*! ./Master.vue */ "./resources/js/components/user/Master.vue")["default"];
@@ -46581,10 +46584,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    {
-      staticClass: "section-main bg padding-y-sm",
-      staticStyle: { background: "#f4f4f4!important" }
-    },
     [_c("Master"), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("Product")],
     1
   )
@@ -46594,237 +46593,266 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "row row-sm" }, [
-            _c("aside", { staticClass: "col-md-3" }, [
-              _c("h5", { staticClass: "text-uppercase" }, [_vm._v("My Shop")]),
-              _vm._v(" "),
-              _c("ul", { staticClass: "menu-category" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "" } }, [_vm._v("Notebook")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Printer ")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Desktop ")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("Toner/Cartiridge ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [_vm._v("Monitor  ")])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("Office Equipment  ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "has-submenu" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _vm._v("More category  "),
-                    _c("i", { staticClass: "icon-arrow-right pull-right" })
+    return _c(
+      "section",
+      {
+        staticClass: "section-main bg padding-y-sm",
+        staticStyle: { background: "#f4f4f4!important" }
+      },
+      [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row row-sm" }, [
+                _c("aside", { staticClass: "col-md-3" }, [
+                  _c("h5", { staticClass: "text-uppercase" }, [
+                    _vm._v("My Shop")
                   ]),
                   _vm._v(" "),
-                  _c("ul", { staticClass: "submenu" }, [
+                  _c("ul", { staticClass: "menu-category" }, [
                     _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Tablet PC ")])
+                      _c("a", { attrs: { href: "" } }, [_vm._v("Notebook")])
                     ]),
                     _vm._v(" "),
                     _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Smartwatch ")])
+                      _c("a", { attrs: { href: "#" } }, [_vm._v("Printer ")])
                     ]),
                     _vm._v(" "),
                     _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Scanner ")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Software  ")])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Network  ")])
+                      _c("a", { attrs: { href: "#" } }, [_vm._v("Desktop ")])
                     ]),
                     _vm._v(" "),
                     _c("li", [
                       _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("Audio/Video  ")
+                        _vm._v("Toner/Cartiridge ")
                       ])
+                    ]),
+                    _vm._v(" "),
+                    _c("li", [
+                      _c("a", { attrs: { href: "#" } }, [_vm._v("Monitor  ")])
                     ]),
                     _vm._v(" "),
                     _c("li", [
                       _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("Accessories  ")
+                        _vm._v("Office Equipment  ")
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("li", [
-                      _c("a", { attrs: { href: "#" } }, [_vm._v("Gaming  ")])
+                    _c("li", { staticClass: "has-submenu" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v("More category  "),
+                        _c("i", { staticClass: "icon-arrow-right pull-right" })
+                      ]),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "submenu" }, [
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Tablet PC ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Smartwatch ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Scanner ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Software  ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Network  ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Audio/Video  ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Accessories  ")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("li", [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v("Gaming  ")
+                          ])
+                        ])
+                      ])
                     ])
                   ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-6" }, [
-              _c(
-                "div",
-                {
-                  staticClass: "carousel slide",
-                  attrs: { id: "carousel1_indicator", "data-ride": "carousel" }
-                },
-                [
-                  _c("ol", { staticClass: "carousel-indicators" }, [
-                    _c("li", {
-                      staticClass: "active",
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "0"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("li", {
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "1"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("li", {
-                      attrs: {
-                        "data-target": "#carousel1_indicator",
-                        "data-slide-to": "2"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "carousel-inner" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "carousel-item carousel-item-next carousel-item-left"
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "d-block w-100",
-                          attrs: {
-                            src: "user/images/banners/slide1.jpg",
-                            alt: "First slide"
-                          }
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "carousel-item" }, [
-                      _c("img", {
-                        staticClass: "d-block w-100",
-                        attrs: {
-                          src: "user/images/banners/slide2.jpg",
-                          alt: "Second slide"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "carousel-item active carousel-item-left"
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "d-block w-100",
-                          attrs: {
-                            src: "user/images/banners/slide3.jpg",
-                            alt: "Third slide"
-                          }
-                        })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
                   _c(
-                    "a",
+                    "div",
                     {
-                      staticClass: "carousel-control-prev",
+                      staticClass: "carousel slide",
                       attrs: {
-                        href: "#carousel1_indicator",
-                        role: "button",
-                        "data-slide": "prev"
+                        id: "carousel1_indicator",
+                        "data-ride": "carousel"
                       }
                     },
                     [
-                      _c("span", {
-                        staticClass: "carousel-control-prev-icon",
-                        attrs: { "aria-hidden": "true" }
-                      }),
+                      _c("ol", { staticClass: "carousel-indicators" }, [
+                        _c("li", {
+                          staticClass: "active",
+                          attrs: {
+                            "data-target": "#carousel1_indicator",
+                            "data-slide-to": "0"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("li", {
+                          attrs: {
+                            "data-target": "#carousel1_indicator",
+                            "data-slide-to": "1"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("li", {
+                          attrs: {
+                            "data-target": "#carousel1_indicator",
+                            "data-slide-to": "2"
+                          }
+                        })
+                      ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("Previous")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "carousel-control-next",
-                      attrs: {
-                        href: "#carousel1_indicator",
-                        role: "button",
-                        "data-slide": "next"
-                      }
-                    },
-                    [
-                      _c("span", {
-                        staticClass: "carousel-control-next-icon",
-                        attrs: { "aria-hidden": "true" }
-                      }),
+                      _c("div", { staticClass: "carousel-inner" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "carousel-item carousel-item-next carousel-item-left"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "d-block w-100",
+                              attrs: {
+                                src: "user/images/banners/slide1.jpg",
+                                alt: "First slide"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "carousel-item" }, [
+                          _c("img", {
+                            staticClass: "d-block w-100",
+                            attrs: {
+                              src: "user/images/banners/slide2.jpg",
+                              alt: "Second slide"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "carousel-item active carousel-item-left"
+                          },
+                          [
+                            _c("img", {
+                              staticClass: "d-block w-100",
+                              attrs: {
+                                src: "user/images/banners/slide3.jpg",
+                                alt: "Third slide"
+                              }
+                            })
+                          ]
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+                      _c(
+                        "a",
+                        {
+                          staticClass: "carousel-control-prev",
+                          attrs: {
+                            href: "#carousel1_indicator",
+                            role: "button",
+                            "data-slide": "prev"
+                          }
+                        },
+                        [
+                          _c("span", {
+                            staticClass: "carousel-control-prev-icon",
+                            attrs: { "aria-hidden": "true" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("Previous")
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "carousel-control-next",
+                          attrs: {
+                            href: "#carousel1_indicator",
+                            role: "button",
+                            "data-slide": "next"
+                          }
+                        },
+                        [
+                          _c("span", {
+                            staticClass: "carousel-control-next-icon",
+                            attrs: { "aria-hidden": "true" }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("Next")
+                          ])
+                        ]
+                      )
                     ]
                   )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("aside", { staticClass: "col-md-3" }, [
-              _c("div", { attrs: { id: "code_card_list" } }, [
-                _c("div", { staticClass: "card" }, [
-                  _c("img", {
-                    staticClass: "card-img-top",
-                    attrs: {
-                      src: "user/images/posts/2.jpg",
-                      alt: "Card image cap"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("ul", { staticClass: "list-group list-group-flush" }, [
-                    _c("li", { staticClass: "list-group-item" }, [
-                      _vm._v("Featured Products")
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "list-group-item" }, [
-                      _vm._v("New Arrival")
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "list-group-item" }, [
-                      _vm._v("Hot Deals")
-                    ]),
-                    _vm._v(" "),
-                    _c("li", { staticClass: "list-group-item" }, [
-                      _vm._v("Offer")
+                ]),
+                _vm._v(" "),
+                _c("aside", { staticClass: "col-md-3" }, [
+                  _c("div", { attrs: { id: "code_card_list" } }, [
+                    _c("div", { staticClass: "card" }, [
+                      _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src: "user/images/posts/2.jpg",
+                          alt: "Card image cap"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("ul", { staticClass: "list-group list-group-flush" }, [
+                        _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v("Featured Products")
+                        ]),
+                        _vm._v(" "),
+                        _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v("New Arrival")
+                        ]),
+                        _vm._v(" "),
+                        _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v("Hot Deals")
+                        ]),
+                        _vm._v(" "),
+                        _c("li", { staticClass: "list-group-item" }, [
+                          _vm._v("Offer")
+                        ])
+                      ])
                     ])
                   ])
                 ])
@@ -46832,8 +46860,8 @@ var staticRenderFns = [
             ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   }
 ]
 render._withStripped = true
