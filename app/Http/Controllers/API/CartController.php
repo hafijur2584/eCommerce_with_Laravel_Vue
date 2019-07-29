@@ -48,13 +48,13 @@ class CartController extends Controller
         [
             'product_id.required' => 'please give a product'
         ]);
-        $carts = Cart::where('user_id',Auth::id())->where('product_id',$request->product_id)->where('order_id',null)->first();
+        $carts = Cart::where('user_id',auth('api')->id())->where('product_id',$request->product_id)->where('order_id',null)->first();
         if (!is_null($carts)){
             $carts->increment('product_quantity');
         }
         else{
             $cart = new Cart();
-            $cart->user_id = Auth::id();
+            $cart->user_id = auth('api')->id();
             $cart->product_id = $request->product_id;
             $cart->product_quantity = $request->product_quantity;
             $cart->save();

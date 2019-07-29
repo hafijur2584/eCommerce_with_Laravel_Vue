@@ -19,6 +19,8 @@ window.Form = Form;
 Vue.component(HasError.name, HasError)
 Vue.component(AlertError.name, AlertError)
 
+Vue.component('pagination', require('laravel-vue-pagination'));
+
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
@@ -52,8 +54,7 @@ const router = new VueRouter({
 
 window.Fire = new Vue();
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

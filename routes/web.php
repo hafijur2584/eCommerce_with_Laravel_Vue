@@ -51,7 +51,6 @@ Route::group(['middleware'=>['auth:admin'],'prefix'=>'admin/','as'=>'admin.'],fu
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('getData', 'ShopController@getData');
 
 
 

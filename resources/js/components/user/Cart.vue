@@ -1,6 +1,9 @@
 <template>
     <!-- ========================= SECTION MAIN ========================= -->
-    <section style="min-height: 600px;" class="section-content bg padding-y-sm">
+    <section>
+        <Master></Master>
+        <section style="min-height: 600px;" class="section-content bg padding-y-sm">
+        
         <div class="container">
             <nav class="mb-3">
                 <ol class="breadcrumb">
@@ -100,12 +103,15 @@
 
         </div> <!-- container .//  --><br><br>
     </section>
+    </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
 </template>
 
 <script>
+    let Master = require('./Master.vue').default;
     export default {
-        name: "Cart"
+        name: "Cart",
+        components:{Master}
     }
 </script>
 

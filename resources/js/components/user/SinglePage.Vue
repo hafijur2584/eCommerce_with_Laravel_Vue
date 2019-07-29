@@ -1,5 +1,7 @@
 <template>
-    <!-- ========================= SECTION MAIN ========================= -->
+    <section>
+        <Master></Master>
+        <!-- ========================= SECTION MAIN ========================= -->
     <section class="section-content bg padding-y-sm">
         <div class="container">
             <nav class="mb-3">
@@ -147,10 +149,13 @@
         </div><!-- container // -->
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+    </section>
 </template>
 
 <script>
+    let Master = require('./Master.vue').default;
     export default {
+        components:{Master},
         mounted() {
             console.log('Component mounted.')
         }

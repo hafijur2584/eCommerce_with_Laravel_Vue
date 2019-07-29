@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::paginate(8));
+        return ProductResource::collection(Product::paginate(6));
     }
 
     /**
@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
+        
     }
 
     /**
@@ -37,10 +37,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($slug)
     {
         $products = Product::where('name','!=',$slug)->inRandomOrder()->take(3)->get();
-        $product = Product::where('name',$slug)->firstOrfail();
+        $product =  Product::where('slug',$slug)->firstOrfail();
+        return [
+            $product,
+            $products
+        ];
 
     }
 

@@ -1,6 +1,8 @@
 <template>
 
-    <section class="content">
+    <section>
+        <Master></Master>
+        <section class="content">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
@@ -134,11 +136,14 @@
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
+    </section>
 </template>
 
 <script>
+    let Master = require('./Master.vue').default;
     export default {
-        name: "Invoice"
+        name: "Invoice",
+        components:{Master}
     }
 </script>
 

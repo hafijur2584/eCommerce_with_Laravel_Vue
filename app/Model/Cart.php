@@ -26,7 +26,7 @@ class Cart extends Model
     }
 
     public static function totalItem(){
-        if (Auth::check()){
+        if (auth('api')->check()){
             $carts = Cart::where('order_id',null)->where('user_id',Auth::id())->get();
         }
         else{
@@ -40,8 +40,8 @@ class Cart extends Model
     }
 
     public static function totalCarts(){
-        if (Auth::check()){
-            $carts = Cart::where('user_id',Auth::id())->where('order_id',null)->get();
+        if (auth('api')->check()){
+            $carts = Cart::where('user_id',auth('api')->id())->where('order_id',null)->get();
             return $carts;
         }
 

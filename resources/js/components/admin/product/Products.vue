@@ -26,7 +26,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="product,key in products">
+                    <tr v-for="product,key in products.data">
                         <td>{{ product.id }}</td>
                         <td>{{ product.name }}</td>
                         <td>{{ product.model }}</td>
@@ -42,6 +42,9 @@
 
                     </tbody>
                 </table>
+            </div>
+            <div class="card-footer">
+                <pagination :data="products" @pagination-change-page="getResults"></pagination>
             </div>
             <!-- /.card-body -->
         </div>
@@ -144,6 +147,12 @@ import { setInterval } from 'timers';
           }
         },
         methods:{
+            getResults(page = 1) {
+                axios.get('/admin/product?page=' + page)
+                .then(response => {
+                    this.products = response.data;
+                });
+            },
             updateProfile(e){
               let file = e.target.files[0];
               let reader = new FileReader();
@@ -216,7 +225,7 @@ import { setInterval } from 'timers';
                 })
             },
             loadUsers(){
-                axios.get("/admin/product").then((data) => (this.products = data.data));
+                axios.get("/admin/product").then(({data}) => (this.products = data));
             },
             
             createProduct(){

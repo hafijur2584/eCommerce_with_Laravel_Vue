@@ -8,7 +8,7 @@
             
             <div id="code_prod2">
                 <div class="row">
-                    <div class="col-md-3" v-for="(item,key) in lists" :key="key">
+                    <div class="col-md-3" v-for="(item,key) in lists.data" :key="key">
                         <figure class="card card-product">
                             <div class="img-wrap">
                                 <img :src="'/images/'+ item.images">
@@ -27,6 +27,13 @@
                     </div> <!-- col // -->
                 </div> <!-- row.// -->
             </div>
+
+            <div class="row">
+                <div class="col-md-12 center">
+                    <pagination :data="lists" @pagination-change-page="getResults"></pagination>
+                </div>
+            </div>
+
         </div>
 
     </section>
@@ -45,20 +52,22 @@
 
             }
         },
-        mounted(){
-             axios.post('/getData').then((v)=>{
-                this.lists = v.data
-             })
+        created(){
+             axios.get('/api/products').then(({data})=>{this.lists = data})
         },
         methods:{
-            getImgUrl(key) {
-                return '/images/' + this.lists[key] + '.jpeg';
+            getResults(page = 1) {
+                axios.get('/api/products?page=' + page)
+                .then(response => {
+                    this.lists = response.data;
+                });
             },
             openShow(){
                 this.showActive = 'is-active';
             },
             addtocart(item){
                 this.cart.push(item)
+                
             }
         }
     }

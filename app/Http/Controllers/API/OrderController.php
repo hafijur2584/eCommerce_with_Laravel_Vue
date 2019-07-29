@@ -43,7 +43,7 @@ class OrderController extends Controller
          ]);
 
          $order = new Order();
-         $order->user_id = Auth::user()->id;
+         $order->user_id = auth('api')->user()->id;
          $order->name = $request->name;
          $order->email = $request->email;
          $order->phone_no = $request->phone_no;
@@ -60,11 +60,11 @@ class OrderController extends Controller
 
     public function invoice(){
 
-        $order = Order::where('user_id',Auth::user()->id)->orderBy('id','DESC')->first();
+        $order = Order::where('user_id',auth('api')->user()->id)->orderBy('id','DESC')->first();
         if (is_null($order)){
             return $order;
         }else{
-            $products = Cart::where('user_id',Auth::user()->id)->where('order_id',$order->id)->get();
+            $products = Cart::where('user_id',auth('api')->user()->id)->where('order_id',$order->id)->get();
 
             return [
                 $order,$products

@@ -1,6 +1,7 @@
 <template>
     <!-- ========================= SECTION MAIN ========================= -->
     <section style="background: #f4f4f4!important" class="section-main bg padding-y-sm">
+        <Master></Master>
         <div class="container">
             <div class="card">
                 <div class="card-body">
@@ -93,8 +94,10 @@
 
 <script>
     let Product = require('./Product.vue').default;
+    let Master = require('./Master.vue').default;
     export default {
         name:"Home",
-        components:{Product}
+        components:{Product,Master}
+        
     }
 </script>

@@ -29,9 +29,6 @@ class ShopController extends Controller
 
         return view('welcome');
     }
-    public function getData(){
-        return Product::orderBy('id','desc')->take(8)->get();
-    }
 
 
 }

@@ -1,5 +1,7 @@
 <template>
-    <!-- ========================= SECTION MAIN ========================= -->
+    <section>
+        <Master></Master>
+        <!-- ========================= SECTION MAIN ========================= -->
     <section  class="section-content bg padding-y-sm">
         <div class="container">
             <nav class="mb-3">
@@ -78,30 +80,30 @@
                                         <label class="form-check">
                                             <input class="form-check-input" value="" type="checkbox">
                                             <span class="form-check-label">
-				  	<span class="float-right badge badge-light round">5</span>
-				    Samsung
-				  </span>
+                    <span class="float-right badge badge-light round">5</span>
+                    Samsung
+                  </span>
                                         </label>  <!-- form-check.// -->
                                         <label class="form-check">
                                             <input class="form-check-input" value="" type="checkbox">
                                             <span class="form-check-label">
-				  	<span class="float-right badge badge-light round">13</span>
-				    Mersedes Benz
-				  </span>
+                    <span class="float-right badge badge-light round">13</span>
+                    Mersedes Benz
+                  </span>
                                         </label> <!-- form-check.// -->
                                         <label class="form-check">
                                             <input class="form-check-input" value="" type="checkbox">
                                             <span class="form-check-label">
-				  	<span class="float-right badge badge-light round">12</span>
-				    Nissan Altima
-				  </span>
+                    <span class="float-right badge badge-light round">12</span>
+                    Nissan Altima
+                  </span>
                                         </label>  <!-- form-check.// -->
                                         <label class="form-check">
                                             <input class="form-check-input" value="" type="checkbox">
                                             <span class="form-check-label">
-				  	<span class="float-right badge badge-light round">32</span>
-				    Another Brand
-				  </span>
+                    <span class="float-right badge badge-light round">32</span>
+                    Another Brand
+                  </span>
                                         </label>  <!-- form-check.// -->
                                     </form>
                                 </div> <!-- card-body.// -->
@@ -114,10 +116,10 @@
                 <main class="col-sm-9">
                     <div id="code_prod2">
                         <div class="row">
-                            <div class="col-md-4" v-for="item,key in lists">
+                            <div class="col-md-4" v-for="item,key in lists.data">
                                 <figure class="card card-product">
                                     <div class="img-wrap">
-                                        <img src="user/images/items/3.jpg">
+                                        <img :src="'/images/'+item.images">
                                         <a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
                                     </div>
                                     <figcaption class="info-wrap">
@@ -132,28 +134,48 @@
                                 </figure> <!-- card // -->
                             </div> <!-- col // -->
                         </div> <!-- row.// -->
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <pagination :data="lists" @pagination-change-page="getResults"></pagination>
+                        </div>
                     </div>
 
                 </main> <!-- col.// -->
+                
             </div>
+            
 
         </div> <!-- container .//  -->
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+    </section>
 </template>
 
 <script>
+    let Master = require('./Master.vue').default;
     export default {
         name: "ProductList",
+        components:{Master}
+        ,
         data(){
             return{
                 lists:{},
                 errors:{}
             }
         },
-        mounted(){
-            axios.post('/getData').then((response) =>this.lists = response.data).catch((error) => this.errors = error.response.data.errors)
+        created(){
+             axios.get('/api/products').then(({data})=>{this.lists = data})
         },
+        methods:{
+            getResults(page = 1) {
+                axios.get('/api/products?page=' + page)
+                .then(response => {
+                    this.lists = response.data;
+                });
+            },
+        }
     }
 </script>
 

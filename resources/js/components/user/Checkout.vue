@@ -1,6 +1,9 @@
 <template>
-    <!-- ========================= SECTION MAIN ========================= -->
+    <section>
+        <Master></Master>
+        <!-- ========================= SECTION MAIN ========================= -->
     <section style="min-height: 600px;" class="section-content bg padding-y-sm">
+        
         <div class="container">
             <nav class="mb-3">
                 <ol class="breadcrumb">
@@ -64,7 +67,7 @@
                 </main> <!-- col.// -->
                 <aside class=" col-sm-4">
                     <form action="" method="post">
-                        <div class="box">		<h4> Billing Information</h4><hr>
+                        <div class="box">       <h4> Billing Information</h4><hr>
                             <div class="col form-group">
                                 <label>Name</label>
                                 <input type="text" name="name" class="form-control" value="" placeholder="">
@@ -121,11 +124,15 @@
         </div> <!-- container .//  --><br><br>
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+    </section>
+    
 </template>
 
 <script>
+    let Master = require('./Master.vue').default;
     export default {
-        name: "Checkout"
+        name: "Checkout",
+        components:{Master}
     }
 </script>
 

@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::orderBy('id','desc')->take(8)->get();
+        return Product::orderBy('id','desc')->paginate(6);
     }
 
     /**
