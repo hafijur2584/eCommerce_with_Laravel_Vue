@@ -1,5 +1,7 @@
 <template>
-    <header class="section-header">
+    <section>
+        
+        <header class="section-header">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="/"><img class="logo" src="/user/images/logos/logo122.png" alt="e-commerce html" title="e-commerce">   </a>
@@ -79,8 +81,21 @@
                                             </div>
                                         </a>
                                         <div class="dropdown-menu">
-                                            
-                                        </div>
+                                        <form class="px-4 py-3">
+                                            <div class="form-group">
+                                                <label>Email address</label>
+                                                <input v-model="email" type="email" class="form-control" placeholder="email@example.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input v-model="password" type="password" class="form-control" placeholder="Password">
+                                            </div>
+                                            <button @click.prevent="login" class="btn btn-primary">Sign in</button>
+                                        </form>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="sign-up.php">Have account? Sign up</a>
+                                        <a class="dropdown-item" href="#">Forgot password?</a>
+                                    </div> <!--  dropdown-menu .// -->
 
                                     </div>
 
@@ -92,6 +107,7 @@
                                         <div class="icontext">
                                             <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i></div>
                                             <div class="text-wrap text-dark mt-1">
+                                                <h1 @cartadded="cartadded"></h1>
                                                 Cart<br> 0
                                             </div>
                                         </div>
@@ -114,15 +130,38 @@
         </header> <!-- section-header.// -->
         <!-- header end -->
 
+    </section>
 
-
-
-
+        
 </template>
-
 <script>
-    
     export default {
-        name:"Master"
+        name:"Master",
+        data(){
+            return{
+                email:'',
+                password:'',
+            }
+        },
+        methods:{
+            login(){
+                let data = {
+                    client_id : 2,
+                    client_secret:'szNVQI5S5XOqsqZANwE2K9Wn0qn4FZUrvJjzb3Tg',
+                    grant_type: 'password',
+                    username:this.email,
+                    password:this.password
+                }
+
+                axios.post('/oauth/token',data).then(response =>{
+                    this.$auth.setToken(response.data.access_token,response.data.expires_in + Date.now())
+                });
+            },
+            cartadded(value){
+            console.log(value);
+            this.$emit('cartadded',  this.cart)
+        }
+            
+        },
     }
 </script>

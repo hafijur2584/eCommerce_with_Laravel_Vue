@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card mt-4">
             <div class="card-header">
-                <h3 class="card-title">Responsive Hover Table</h3>
+                <h3 class="card-title">Product List Table</h3>
 
                 <div class="card-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -143,7 +143,8 @@ import { setInterval } from 'timers';
                   description:'',
                   details: '',
                   images: '',
-              })
+              }),
+              searchProduct:'',
           }
         },
         methods:{
@@ -239,6 +240,7 @@ import { setInterval } from 'timers';
                 })
                 })
                 
+                
                 // this.$Progress.finish();
             }
         },
@@ -256,5 +258,8 @@ import { setInterval } from 'timers';
 </script>
 
 <style scoped>
-
+.serach{
+    right: 20rem!important;
+    top: 1rem;
+}
 </style>

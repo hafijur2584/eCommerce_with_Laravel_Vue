@@ -1,4 +1,5 @@
 <template>
+<div>
     <!-- ========================= SECTION CONTENT ========================= -->
     <section class="section-content padding-y-sm bg">
         <div class="container">
@@ -17,7 +18,7 @@
                             <figcaption class="info-wrap">
                                 <a href="#" class="title">{{ item.name }}</a>
                                 <div class="action-wrap">
-                                    <a href="#" class="btn btn-warning btn-sm float-right" @click="addtocart(item)"> <i class="fa fa-shopping-cart"></i>  Add To Cart </a>
+                                    <a class="btn btn-warning btn-sm float-right" @click="addtocart(item)"> <i class="fa fa-shopping-cart"></i>  Add To Cart </a>
                                     <div class="price-wrap h5">
                                         <span class="price-new">${{ item.price }}</span>
                                     </div> <!-- price-wrap.// -->
@@ -38,6 +39,7 @@
 
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+    </div>
 </template>
 
 <script>
@@ -66,8 +68,9 @@
                 this.showActive = 'is-active';
             },
             addtocart(item){
+                // console.log(item, 'sadsds')
                 this.cart.push(item)
-                
+                this.$emit('cartadded',  this.cart)
             }
         }
     }

@@ -105,13 +105,19 @@
     </section>
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
+    <!-- hafijur2584@gmail.com -->
 </template>
 
 <script>
     let Master = require('./Master.vue').default;
     export default {
         name: "Cart",
-        components:{Master}
+        components:{Master},
+        mounted(){
+          if( !localStorage.getItem('token')){
+              this.$router.push('/login')
+          }
+        }
     }
 </script>
 
