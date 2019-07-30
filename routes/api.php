@@ -24,3 +24,4 @@ Route::apiResource('/carts','API\CartController');
 Route::apiResource('/orders','API\OrderController');
 Route::get('profile','API\UserController@profile');
 Route::put('profile','API\UserController@updateProfile');
+Route::get('mayYouLike','API\ProductController@mayYouLike');

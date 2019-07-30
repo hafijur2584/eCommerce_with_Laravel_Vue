@@ -14,8 +14,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::inRandomOrder()->take(8)->get();
-        return view('user.products')->with('products',$products);
+        // $products = Product::inRandomOrder()->take(8)->get();
+        return view('user.products');
     }
 
     /**

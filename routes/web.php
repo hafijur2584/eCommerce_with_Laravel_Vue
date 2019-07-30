@@ -16,7 +16,7 @@
 Route::get('/', 'WellcomeController@index')->name('welcome');
 
 Route::get('/', 'WellcomeController@index')->name('welcome');
-Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/product', 'ShopController@index')->name('shop');
 Route::get('/singleProduct', 'ShopController@show')->name('shop.show');
 Route::get('/invoice', 'OrderController@invoice')->name('invoice');
 
@@ -48,7 +48,9 @@ Auth::routes();
 
 Route::group(['middleware'=>['auth:admin'],'prefix'=>'admin/','as'=>'admin.'],function (){
     Route::resource('product','Admin\ProductController');
+    Route::get('products', 'Admin\ProductController@adminProducts');
 });
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

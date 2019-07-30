@@ -148,7 +148,7 @@ import { setInterval } from 'timers';
         },
         methods:{
             getResults(page = 1) {
-                axios.get('/admin/product?page=' + page)
+                axios.get('/admin/products?page=' + page)
                 .then(response => {
                     this.products = response.data;
                 });
@@ -225,7 +225,7 @@ import { setInterval } from 'timers';
                 })
             },
             loadUsers(){
-                axios.get("/admin/product").then(({data}) => (this.products = data));
+                axios.get("/admin/products").then(({data}) => (this.products = data));
             },
             
             createProduct(){

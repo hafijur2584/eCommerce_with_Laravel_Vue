@@ -48,7 +48,7 @@ const routes = [
 ]
 // let Footer = require('./components/user/Footer.vue').default;
 const router = new VueRouter({
-  // mode:'history',
+  mode:'history',
   routes // short for `routes: routes`
 })
 
