@@ -1,0 +1,7 @@
+user: email:user@gmail.com password:12345678
+
+
+admin: 
+url: /admin/home
+email:admin@gmail.com
+password: 12345678
