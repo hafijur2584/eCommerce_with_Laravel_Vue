@@ -500,7 +500,7 @@
 
                     <center>
 
-                        <a href="" class="btn btn-success btn-block btn-lg"> Place your order</a>
+                        <router-link to="/checkout" class="btn btn-success btn-block btn-lg"> Place your order</router-link>
                         <a href="" class="btn btn-info btn-block btn-lg"> Continue Shopping</a>
                     </center>
                 </aside> <!-- col.// -->

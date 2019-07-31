@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $carts = Cart::totalCarts();
-        return view('user.checkout',compact('carts'));
+        // $carts = Cart::totalCarts();
+        return view('user.checkout');
     }
 
     /**

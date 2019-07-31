@@ -23,38 +23,29 @@
                                 <th scope="col">Product</th>
                                 <th scope="col">Model</th>
                                 <th scope="col">Color</th>
-                                <th scope="col" width="120">Quantity</th>
                                 <th scope="col" width="120">Price</th>
                                 <th scope="col" width="120">Total</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr v-for= "cart in carts" v-bind:key="carts.id">
                                 <td>
-                                    <figure class="media">
-                                        <div class="img-wrap"><img src="user/images/items/4.jpg" class="img-thumbnail img-sm"></div>
-                                        <figcaption class="media-body">
-                                            <h6 class="title text-truncate">Product Name</h6>
-                                        </figcaption>
-                                    </figure>
+                                    {{ cart.name}}
                                 </td>
                                 <td>
-                                    <dd>model</dd>
+                                    <dd>{{cart.model}}</dd>
                                 </td>
                                 <td>
-                                    <h5>color</h5>
-                                </td>
-                                <td>
-                                    <h5>2</h5>
+                                    <h5>{{cart.color}}</h5>
                                 </td>
                                 <td>
                                     <div class="price-wrap">
-                                        <var class="price">USD 455</var>
+                                        <var class="price"> ${{cart.price}}</var>
                                     </div> <!-- price-wrap .// -->
                                 </td>
                                 <td>
                                     <div class="price-wrap">
-                                        <var class="price">USD 567</var>
+                                        <var class="price">${{ cart.price }}</var>
                                     </div> <!-- price-wrap .// -->
                                 </td>
 
@@ -92,7 +83,7 @@
                         <div class="alert alert-warning">
                             <dl class="dlist-align">
                                 <dt>Total price: </dt>
-                                <dd class="text-right">$ 566</dd>
+                                <dd class="text-right">$ {{totalprice}}</dd>
                             </dl>
                             <dl class="dlist-align">
                                 <dt>Shipping:</dt>
@@ -100,7 +91,7 @@
                             </dl>
                             <dl class="dlist-align h4">
                                 <dt>Total:</dt>
-                                <dd class="text-right"><strong>USD 6788</strong></dd>
+                                <dd class="text-right"><strong>USD {{totalprice + 10}}</strong></dd>
                                 <input type="hidden" name="total_price" value="">
                             </dl>
 
@@ -132,7 +123,30 @@
     let Master = require('./Master.vue').default;
     export default {
         name: "Checkout",
-        components:{Master}
+        components:{Master},
+        data(){
+            return{
+                carts:[],
+                total:'0'
+            }
+            
+        },
+        created(){
+            this.viewCart();
+        },
+
+        methods:{
+            viewCart(){
+                if (localStorage.getItem('carts')) {
+                    this.carts = JSON.parse(localStorage.getItem('carts'));
+                    this.totalprice = this.carts.reduce((total,cart) =>{
+                        return total + 1 * cart.price;
+                    },0);
+                }
+            },
+            
+        }
+
     }
 </script>
 

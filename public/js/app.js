@@ -2564,21 +2564,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var Master = __webpack_require__(/*! ./Master.vue */ "./resources/js/components/user/Master.vue")["default"];
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Checkout",
   components: {
     Master: Master
+  },
+  data: function data() {
+    return {
+      carts: [],
+      total: '0'
+    };
+  },
+  created: function created() {
+    this.viewCart();
+  },
+  methods: {
+    viewCart: function viewCart() {
+      if (localStorage.getItem('carts')) {
+        this.carts = JSON.parse(localStorage.getItem('carts'));
+        this.totalprice = this.carts.reduce(function (total, cart) {
+          return total + 1 * cart.price;
+        }, 0);
+      }
+    }
   }
 });
 
@@ -47100,7 +47110,53 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
-              _vm._m(1),
+              _c("main", { staticClass: "col-sm-8" }, [
+                _c("div", { staticClass: "card" }, [
+                  _c(
+                    "table",
+                    { staticClass: "table table-hover shopping-cart-wrap" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.carts, function(cart) {
+                          return _c("tr", { key: _vm.carts.id }, [
+                            _c("td", [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(cart.name) +
+                                  "\n                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [_c("dd", [_vm._v(_vm._s(cart.model))])]),
+                            _vm._v(" "),
+                            _c("td", [_c("h5", [_vm._v(_vm._s(cart.color))])]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("div", { staticClass: "price-wrap" }, [
+                                _c("var", { staticClass: "price" }, [
+                                  _vm._v(" $" + _vm._s(cart.price))
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _c("div", { staticClass: "price-wrap" }, [
+                                _c("var", { staticClass: "price" }, [
+                                  _vm._v("$" + _vm._s(cart.price))
+                                ])
+                              ])
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
+              ]),
               _vm._v(" "),
               _c("aside", { staticClass: " col-sm-4" }, [
                 _c(
@@ -47109,7 +47165,35 @@ var render = function() {
                   [
                     _vm._m(2),
                     _vm._v(" "),
-                    _vm._m(3),
+                    _c("div", { staticClass: "alert alert-warning" }, [
+                      _c("dl", { staticClass: "dlist-align" }, [
+                        _c("dt", [_vm._v("Total price: ")]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "text-right" }, [
+                          _vm._v("$ " + _vm._s(_vm.totalprice))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("dl", { staticClass: "dlist-align h4" }, [
+                        _c("dt", [_vm._v("Total:")]),
+                        _vm._v(" "),
+                        _c("dd", { staticClass: "text-right" }, [
+                          _c("strong", [
+                            _vm._v("USD " + _vm._s(_vm.totalprice + 10))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: {
+                            type: "hidden",
+                            name: "total_price",
+                            value: ""
+                          }
+                        })
+                      ])
+                    ]),
                     _vm._v(" "),
                     _vm._m(4),
                     _vm._v(" "),
@@ -47172,70 +47256,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "col-sm-8" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("table", { staticClass: "table table-hover shopping-cart-wrap" }, [
-          _c("thead", { staticClass: "text-muted" }, [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Model")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Color")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col", width: "120" } }, [
-                _vm._v("Quantity")
-              ]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col", width: "120" } }, [
-                _vm._v("Price")
-              ]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col", width: "120" } }, [
-                _vm._v("Total")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [
-                _c("figure", { staticClass: "media" }, [
-                  _c("div", { staticClass: "img-wrap" }, [
-                    _c("img", {
-                      staticClass: "img-thumbnail img-sm",
-                      attrs: { src: "user/images/items/4.jpg" }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("figcaption", { staticClass: "media-body" }, [
-                    _c("h6", { staticClass: "title text-truncate" }, [
-                      _vm._v("Product Name")
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [_c("dd", [_vm._v("model")])]),
-              _vm._v(" "),
-              _c("td", [_c("h5", [_vm._v("color")])]),
-              _vm._v(" "),
-              _c("td", [_c("h5", [_vm._v("2")])]),
-              _vm._v(" "),
-              _c("td", [
-                _c("div", { staticClass: "price-wrap" }, [
-                  _c("var", { staticClass: "price" }, [_vm._v("USD 455")])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("div", { staticClass: "price-wrap" }, [
-                  _c("var", { staticClass: "price" }, [_vm._v("USD 567")])
-                ])
-              ])
-            ])
-          ])
-        ])
+    return _c("thead", { staticClass: "text-muted" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Product")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Model")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Color")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col", width: "120" } }, [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col", width: "120" } }, [_vm._v("Total")])
       ])
     ])
   },
@@ -47293,30 +47324,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "alert alert-warning" }, [
-      _c("dl", { staticClass: "dlist-align" }, [
-        _c("dt", [_vm._v("Total price: ")]),
-        _vm._v(" "),
-        _c("dd", { staticClass: "text-right" }, [_vm._v("$ 566")])
-      ]),
+    return _c("dl", { staticClass: "dlist-align" }, [
+      _c("dt", [_vm._v("Shipping:")]),
       _vm._v(" "),
-      _c("dl", { staticClass: "dlist-align" }, [
-        _c("dt", [_vm._v("Shipping:")]),
-        _vm._v(" "),
-        _c("dd", { staticClass: "text-right" }, [_vm._v("$ 10")])
-      ]),
-      _vm._v(" "),
-      _c("dl", { staticClass: "dlist-align h4" }, [
-        _c("dt", [_vm._v("Total:")]),
-        _vm._v(" "),
-        _c("dd", { staticClass: "text-right" }, [
-          _c("strong", [_vm._v("USD 6788")])
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "hidden", name: "total_price", value: "" }
-        })
-      ])
+      _c("dd", { staticClass: "text-right" }, [_vm._v("$ 10")])
     ])
   },
   function() {
@@ -47794,25 +47805,30 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("center", [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-success btn-block btn-lg",
-                                attrs: { href: "" }
-                              },
-                              [_vm._v(" Place your order")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-info btn-block btn-lg",
-                                attrs: { href: "" }
-                              },
-                              [_vm._v(" Continue Shopping")]
-                            )
-                          ])
+                          _c(
+                            "center",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass:
+                                    "btn btn-success btn-block btn-lg",
+                                  attrs: { to: "/checkout" }
+                                },
+                                [_vm._v(" Place your order")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "btn btn-info btn-block btn-lg",
+                                  attrs: { href: "" }
+                                },
+                                [_vm._v(" Continue Shopping")]
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
                       )

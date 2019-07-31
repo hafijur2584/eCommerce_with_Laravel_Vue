@@ -19,6 +19,7 @@ Route::get('/', 'WellcomeController@index')->name('welcome');
 Route::get('/product', 'ShopController@index')->name('shop');
 Route::get('/singleProduct', 'ShopController@show')->name('shop.show');
 Route::get('/invoice', 'OrderController@invoice')->name('invoice');
+Route::get('/checkout', 'OrderController@index')->name('checkout');
 
 Route::group(['prefix' => 'cart'],function (){
     Route::get('/','CartController@index')->name('cart');
