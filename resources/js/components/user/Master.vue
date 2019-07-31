@@ -107,7 +107,7 @@
                                         <div class="icontext">
                                             <div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i></div>
                                             <div class="text-wrap text-dark mt-1">
-                                                <h1 @cartadded="cartadded"></h1>
+                                                
                                                 Cart<br> 0
                                             </div>
                                         </div>
@@ -157,10 +157,7 @@
                     this.$auth.setToken(response.data.access_token,response.data.expires_in + Date.now())
                 });
             },
-            cartadded(value){
-            console.log(value);
-            this.$emit('cartadded',  this.cart)
-        }
+            
             
         },
     }

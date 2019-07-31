@@ -71,6 +71,7 @@
         mounted(){
           if( localStorage.getItem('token')){
               this.$router.push('/')
+              Swal.fire("Failed!","You are already login.","warning");
           }
         }
         

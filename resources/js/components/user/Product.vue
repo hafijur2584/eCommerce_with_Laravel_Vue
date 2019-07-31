@@ -5,6 +5,7 @@
         <div class="container">
             <header class="section-heading heading-line">
                 <h4 class="title-section bg text-uppercase">New Arival</h4>
+                <h4>{{badge}}</h4>
             </header>
             
             <div id="code_prod2">
@@ -51,11 +52,21 @@
                 lists:{},
                 errors:{},
                 cart:[],
+                cartadd:{
+                    id:'',
+                    name:'',
+                    price:'',
+                    amount:''
+                },
+                badge:'',
+                quantity:'1',
+                totalprice:'0',
 
             }
         },
         created(){
-             axios.get('/api/products').then(({data})=>{this.lists = data})
+             axios.get('/api/products').then(({data})=>{this.lists = data}),
+             this.viewCart();
         },
         methods:{
             getResults(page = 1) {
@@ -67,10 +78,36 @@
             openShow(){
                 this.showActive = 'is-active';
             },
+            viewCart(){
+                if(localStorage.getItem('cart')){
+                    this.cart =JSON.parse(localStorage.getItem('cart'));
+                    this.badge = this.cart.length;
+                    this.totalprice = this.cart.reduce((total,item) => {
+                        return total + this.quantity * item.price;
+                    },0);
+                }
+            },
+
+            storeCart(){
+                let parsed = JSON.stringify(this.cart);
+                localStorage.setItem('cart',parsed);
+                this.viewCart();
+            },
+            removeCart(){
+                this.cart.splice(item,1);
+                this.storeCart();
+            },
+
             addtocart(item){
                 // console.log(item, 'sadsds')
-                this.cart.push(item)
-                this.$emit('cartadded',  this.cart)
+                this.cartadd.id = item.id;
+                this.cartadd.name = item.name;
+                this.cartadd.price = item.price;
+                this.cartadd.amount = item.amount;
+
+                this.cart.push(item);
+                this.storeCart();
+                this.$emit('cartadded',  this.cart);
             }
         }
     }
